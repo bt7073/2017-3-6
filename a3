@@ -1,0 +1,135 @@
+const byte startPin = 2;
+const byte endPin = 9;
+const byte button = 13;
+
+void setup() {
+  for (byte i = startPin; i<= endPin; i++) {
+     pinMode(i, OUTPUT);
+  }
+  pinMode(button,INPUT);
+}
+byte i,k,j=startPin;
+byte lightPin = startPin;
+
+
+void loop() {
+
+  boolean val=digitalRead(13);
+    if(val)
+    {
+      if(j==2){
+  for(k=0;k<2;k++)
+   {
+     
+   for (i=startPin; i<= endPin; i++) {
+    digitalWrite(i,HIGH);
+   }
+  delay(500);
+    for (i=startPin; i<= endPin; i++) {
+    digitalWrite(i,LOW);
+   }
+  delay(500);
+   }
+   
+ }
+     if(j<9)
+  {
+   for (i=startPin; i<= endPin; i++) 
+    {
+      digitalWrite(i,LOW);
+    }
+   digitalWrite(lightPin, HIGH);
+   delay (500);
+  
+    if (lightPin < endPin) 
+    {
+      lightPin ++;
+    }
+    j++;
+    if(lightPin==9)
+    {
+      for (i=startPin; i<= endPin; i++) 
+    {
+      digitalWrite(i,LOW);
+    }
+      digitalWrite(lightPin, HIGH);
+   delay (500);
+      digitalWrite(lightPin, LOW);
+   delay (500);
+      
+      for(k=0;k<2;k++)
+   {
+     
+   for (i=startPin; i<= endPin; i++) {
+    digitalWrite(i,HIGH);
+   }
+  delay(500);
+        for (i=startPin; i<= endPin; i++) {
+    digitalWrite(i,LOW);
+   }
+  delay(500);
+   }
+      
+      
+    }
+  }
+  else
+  {
+    
+    for (i=startPin; i<= endPin; i++) 
+    {
+      digitalWrite(i,LOW);
+    }
+    digitalWrite(lightPin, HIGH);
+    delay (500);
+  
+    if (lightPin > startPin) 
+    {
+      lightPin --;
+    }
+    else
+    {
+      digitalWrite(lightPin, LOW);
+    delay (500);
+      j=2;
+    }
+  }
+    }
+    else
+    {
+    if(j<9)
+  {
+   for (i=startPin; i<= endPin; i++) 
+    {
+      digitalWrite(i,LOW);
+    }
+   digitalWrite(lightPin, HIGH);
+   delay (100);
+  
+    if (lightPin < endPin) 
+    {
+      lightPin ++;
+    }
+    j++;  
+  }
+  else
+  {
+    for (i=startPin; i<= endPin; i++) 
+    {
+      digitalWrite(i,LOW);
+    }
+    digitalWrite(lightPin, HIGH);
+    delay (100);
+  
+    if (lightPin > startPin) 
+    {
+      lightPin --;
+    }
+    else
+    {
+      j=2;
+    }
+  }
+    }
+  
+}
